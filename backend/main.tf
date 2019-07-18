@@ -4,6 +4,7 @@ provider "aws" {
   profile = "${var.aws_profile}"
 }
 
+
 #--------------bucket---------------#
 resource "aws_s3_bucket" "backend-vpc" {
   bucket = "backend-vpc"
