@@ -1,7 +1,7 @@
 ############################------SG-----####################################
 resource "aws_security_group" "sg-elb" {
   name = "ELB" ## elastic load balancer
-  vpc_id = "vpc-0e3aea0b3adee0287"
+  vpc_id = "${var.vpc_id}"
   ingress {
     from_port = 80
     to_port = 80
@@ -21,7 +21,7 @@ resource "aws_security_group" "sg-elb" {
 #----------------------------------sg-ec2------------------------------------#
 resource "aws_security_group" "sg-ec2" {
   name = "EC2"
-  vpc_id = "vpc-0e3aea0b3adee0287"
+  vpc_id = "${var.vpc_id}"
   ingress {
     from_port = 22
     to_port = 22
@@ -41,6 +41,7 @@ resource "aws_security_group" "sg-ec2" {
 #---------------rule for SG allow trafic from ELB----------------------#
 
 resource "aws_security_group_rule" "allow_1" {
+
   from_port = 0
   protocol = "tcp"
   security_group_id = "${aws_security_group.sg-ec2.id}"
