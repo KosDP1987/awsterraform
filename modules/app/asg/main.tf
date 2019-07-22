@@ -9,7 +9,7 @@ data "aws_ami" "ubuntu" {
     name = "virtualization-type"
     values = ["hvm"]
   }
-  owners = ["099720109477"] # Canonical
+  owners = ["099720109477"]
 }
 ##########################---launch_configuration----#######################
 resource "aws_launch_configuration" "asg_conf" {
