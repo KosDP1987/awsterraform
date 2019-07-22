@@ -49,8 +49,8 @@ module "asg" {
   public_subnets = "${module.vpc.public_subnets}"
   availability_zones = "${var.availability_zones}"
 }
-module "attachment" {
-  source = "./modules/app/attachment"
+module "attach" {
+  source = "./modules/app/attach"
   asg = "${module.asg.asg}"
   elb ="${module.elb.elb}"
 }
