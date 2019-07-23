@@ -4,7 +4,7 @@ resource "aws_vpc" "vpc-demo" {
   enable_dns_hostnames = true
   tags = {
     Name = "vpc-demo-${terraform.workspace}"
-    Env = "${terraform.workspace}"
+    env = "${terraform.workspace}"
   }
 }
 #------------------internet_gateway
@@ -23,7 +23,7 @@ resource "aws_route_table" "vpc_public" {
   }
   tags = {
     Name = "vpc_public_rt-${terraform.workspace}"
-    Env = "${terraform.workspace}"
+    env = "${terraform.workspace}"
   }
 }
 #____________public_subnets ---------------#
@@ -51,6 +51,6 @@ resource "aws_subnet" "privat" {
   availability_zone = "${element(var.availability_zones,count.index)}"
   tags = {
     Name = "privat-demo-${terraform.workspace}-[${count.index}]"
-    Env = "${terraform.workspace}"
+    env = "${terraform.workspace}"
   }
 }

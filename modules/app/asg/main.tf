@@ -10,6 +10,7 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
   owners = ["099720109477"]
+  //owners = ["self"]
 }
 ##########################---launch_configuration----#######################
 resource "aws_launch_configuration" "asg_conf" {
@@ -28,7 +29,7 @@ resource "aws_autoscaling_group" "asg" {
   name = "demo-app-dev"
   max_size = 2
   min_size = 1
-  launch_configuration = "${aws_launch_configuration.asg_conf.name}"
+  launch_configuration = "${aws_launch_configuration.asg_conf.id}"
   availability_zones = "${var.availability_zones}"
   vpc_zone_identifier = "${var.public_subnets}"
   tag {

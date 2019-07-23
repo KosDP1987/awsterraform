@@ -1,6 +1,6 @@
 ############################------SG-----####################################
 resource "aws_security_group" "sg-elb" {
-  name = "ELB" ## elastic load balancer
+  name = "elb" ## elastic load balancer
   vpc_id = "${var.vpc_id}"
   ingress {
     from_port = 80
@@ -20,7 +20,7 @@ resource "aws_security_group" "sg-elb" {
 }
 #----------------------------------sg-ec2------------------------------------#
 resource "aws_security_group" "sg-ec2" {
-  name = "EC2"
+  name = "ec2"
   vpc_id = "${var.vpc_id}"
   ingress {
     from_port = 22
